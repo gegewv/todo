@@ -3,14 +3,15 @@
         <div class="mb-4">
             <h1 class="text-grey-darkest">Todo List</h1>
             <div class="flex mt-4">
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" v-model="newTodo" placeholder="Add Todo">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" v-model="newTodo" @keyup.enter="add" placeholder="Add Todo">
                 <button class="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal" @click="add" :disabled="newTodo.length === 0">Add</button>
             </div>
         </div>
         <div>
             <div class="flex mb-4 items-center" v-for="(todo, index) in todos" :key="todo.id">
+                <input type="checkbox" class="mr-2" @click="updateStatus(todo)">
                 <p class="w-full" :class="todo.finished ? 'line-through text-green' : 'text-grey-darkest'">{{ todo.text }}</p>
-                <button class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white" :class="todo.finished ? 'text-grey border-grey hover:bg-grey' : 'text-green border-green hover:bg-green'" @click="updateStatus(todo)" v-text="todo.finished ? 'Not Done' : 'Done'"></button>
+<!--                <button class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white" :class="todo.finished ? 'text-grey border-grey hover:bg-grey' : 'text-green border-green hover:bg-green'" @click="updateStatus(todo)" v-text="todo.finished ? 'Not Done' : 'Done'"></button>-->
                 <button class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red" @click="remove(index)">Remove</button>
             </div>
             <div v-show="todos.length === 0">
@@ -30,19 +31,27 @@
             }
         },
         methods: {
+            getTodos() {
+                const t = this;
+                axios.get('/todos').then(({data}) => {
+                    t.todos = data
+                })
+            },
             add() {
                 const t = this;
 
-                let todo = {
-                    id: t.baseId,
-                    text: t.newTodo,
-                    finished: false
-                };
+                if (t.newTodo.length > 0) {
+                    let todo = {
+                        id: t.baseId,
+                        text: t.newTodo,
+                        finished: false
+                    };
 
-                t.todos.unshift(todo);
+                    t.todos.unshift(todo);
 
-                t.newTodo = '';
-                t.baseId++;
+                    t.newTodo = '';
+                    t.baseId++;
+                }
             },
             updateStatus(todo) {
                 todo.finished = !todo.finished;
@@ -52,6 +61,9 @@
 
                 t.todos.splice(index, 1);
             }
+        },
+        created() {
+            this.getTodos();
         }
     }
 </script>

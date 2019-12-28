@@ -1860,6 +1860,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1869,16 +1870,26 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getTodos: function getTodos() {
+      var t = this;
+      axios.get('/todos').then(function (_ref) {
+        var data = _ref.data;
+        t.todos = data;
+      });
+    },
     add: function add() {
       var t = this;
-      var todo = {
-        id: t.baseId,
-        text: t.newTodo,
-        finished: false
-      };
-      t.todos.unshift(todo);
-      t.newTodo = '';
-      t.baseId++;
+
+      if (t.newTodo.length > 0) {
+        var todo = {
+          id: t.baseId,
+          text: t.newTodo,
+          finished: false
+        };
+        t.todos.unshift(todo);
+        t.newTodo = '';
+        t.baseId++;
+      }
     },
     updateStatus: function updateStatus(todo) {
       todo.finished = !todo.finished;
@@ -1887,6 +1898,9 @@ __webpack_require__.r(__webpack_exports__);
       var t = this;
       t.todos.splice(index, 1);
     }
+  },
+  created: function created() {
+    this.getTodos();
   }
 });
 
@@ -37308,6 +37322,15 @@ var render = function() {
             attrs: { placeholder: "Add Todo" },
             domProps: { value: _vm.newTodo },
             on: {
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.add($event)
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -37338,6 +37361,16 @@ var render = function() {
               "div",
               { key: todo.id, staticClass: "flex mb-4 items-center" },
               [
+                _c("input", {
+                  staticClass: "mr-2",
+                  attrs: { type: "checkbox" },
+                  on: {
+                    click: function($event) {
+                      return _vm.updateStatus(todo)
+                    }
+                  }
+                }),
+                _vm._v(" "),
                 _c(
                   "p",
                   {
@@ -37348,22 +37381,6 @@ var render = function() {
                   },
                   [_vm._v(_vm._s(todo.text))]
                 ),
-                _vm._v(" "),
-                _c("button", {
-                  staticClass:
-                    "flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white",
-                  class: todo.finished
-                    ? "text-grey border-grey hover:bg-grey"
-                    : "text-green border-green hover:bg-green",
-                  domProps: {
-                    textContent: _vm._s(todo.finished ? "Not Done" : "Done")
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.updateStatus(todo)
-                    }
-                  }
-                }),
                 _vm._v(" "),
                 _c(
                   "button",
