@@ -1,15 +1,18 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+//@import 'variables';
 
 // Bootstrap
 //@import '~bootstrap/scss/bootstrap';
 
 // Tailwind
-@import "~tailwindcss/dist/tailwind.css";
-@import "~tailwindcss/dist/components.css";
-@import "~tailwindcss/dist/utilities.css";
-@import "~tailwindcss/dist/preflight.css";
+//@import "~tailwindcss/dist/tailwind.css";
+//@import "~tailwindcss/dist/components.css";
+//@import "~tailwindcss/dist/utilities.css";
+//@import "~tailwindcss/dist/preflight.css";
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
 

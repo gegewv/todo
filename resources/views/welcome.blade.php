@@ -10,6 +10,12 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+        <style>
+            .max-h-screen-1/2 {
+
+            }
+        </style>
     </head>
     <body>
         <div id="app" class="h-screen flex items-center justify-center bg-teal-lightest font-sans">

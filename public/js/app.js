@@ -1865,8 +1865,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       todos: [],
-      newTodo: '',
-      baseId: 1
+      newTodo: ''
     };
   },
   methods: {
@@ -1877,18 +1876,23 @@ __webpack_require__.r(__webpack_exports__);
         t.todos = data;
       });
     },
+    createTodo: function createTodo(text) {
+      var t = this;
+      axios.post('/todos', {
+        text: text,
+        finished: false
+      }).then(function (_ref2) {
+        var data = _ref2.data;
+        // unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。
+        t.todos.unshift(data);
+      });
+    },
     add: function add() {
       var t = this;
 
       if (t.newTodo.length > 0) {
-        var todo = {
-          id: t.baseId,
-          text: t.newTodo,
-          finished: false
-        };
-        t.todos.unshift(todo);
+        t.createTodo(t.newTodo);
         t.newTodo = '';
-        t.baseId++;
       }
     },
     updateStatus: function updateStatus(todo) {
@@ -37355,6 +37359,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
+        { staticClass: "max-h-screen-1/2 overflow-y-scroll" },
         [
           _vm._l(_vm.todos, function(todo, index) {
             return _c(
