@@ -22,6 +22,45 @@
 
 ### ERROR（以下是我遇到的问题和我的解决方法，如有更好的解决方法请麻烦告诉我一下）
 
+- 如何引入 `tailwind` :
+    - 参考资料：
+        - [如何在Laravel中使用Tailwind CSS?](https://learnku.com/laravel/t/36453)
+        - [Setting Up Tailwind In A Laravel Project](https://nick-basile.com/blog/post/setting-up-tailwind-in-a-laravel-project)
+        - [查看 TaiilWind 官方文档](https://v0.tailwindcss.com/docs/installation/)
+        
+    - 本人的配置：
+        - 安装：
+            ```
+            # 使用 npm
+            npm install tailwindcss --save-dev
+            # 使用 Yarn
+            yarn add tailwindcss --dev
+            ```
+        - 生成配置文件
+            ```
+            ./node_modules/.bin/tailwind init tailwind.js
+            ```
+        - 配置
+            ```scss
+            // /resource/sass/app.scss
+            @tailwind preflight;
+            @tailwind components;
+            @tailwind utilities;
+            ```
+          
+            ```javascript
+            // /webpack.min.js
+            const mix = require('laravel-mix');
+            let tailwindcss = require('tailwindcss');
+            
+            mix.js('resources/js/app.js', 'public/js')
+               .sass('resources/sass/app.scss', 'public/css')
+                .options({
+                    processCssUrls: false,
+                    postCss: [ tailwindcss('./tailwind.js') ],
+                });
+            ```
+
 - 使用Vue Test Utils 库来测试时，运行 `npm run test-js` 时出现一下错误信息：
 ```shell script
     Error: Chunk.parents: Use ChunkGroup.getParents() instead
