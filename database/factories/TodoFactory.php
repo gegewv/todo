@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Todo::class, function (Faker $faker) {
     return [
         'text' => $faker->sentence,
+        'finished' => false,
         // 在命令行中运行
         /*
          * php artisan tinker
