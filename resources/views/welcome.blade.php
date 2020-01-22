@@ -11,11 +11,11 @@
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        <style>
+        <!-- <style>
             .max-h-screen-1/2 {
 
             }
-        </style>
+        </style> -->
     </head>
     <body>
         <div id="app" class="h-screen flex items-center justify-center bg-teal-lightest font-sans">

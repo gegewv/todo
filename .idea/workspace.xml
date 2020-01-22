@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="530e7d20-6768-465a-8bbb-2ba7137a8333" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +131,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blog" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
@@ -175,7 +174,12 @@
       <workItem from="1577581251770" duration="2183000" />
       <workItem from="1577584882376" duration="476000" />
       <workItem from="1577586133950" duration="637000" />
-      <workItem from="1577586782496" duration="5201000" />
+      <workItem from="1577586782496" duration="7914000" />
+      <workItem from="1577674736471" duration="611000" />
+      <workItem from="1578035511115" duration="928000" />
+      <workItem from="1578121621920" duration="932000" />
+      <workItem from="1578131815129" duration="263000" />
+      <workItem from="1578278315143" duration="21000" />
     </task>
     <servers />
   </component>
@@ -183,6 +187,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="771" y="617" key="FileChooserDialogImpl" timestamp="1578278333976">
+      <screen x="0" y="0" width="2160" height="1410" />
+    </state>
+    <state x="771" y="617" key="FileChooserDialogImpl/0.0.2160.1410@0.0.2160.1410" timestamp="1578278333976" />
     <state x="1011" y="459" key="SettingsEditor" timestamp="1577501744465">
       <screen x="0" y="0" width="2160" height="1410" />
     </state>
